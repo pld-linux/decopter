@@ -7,4 +7,5 @@ Exec=decopter
 Terminal=false
 Icon=decopter.png
 Type=Application
+Categories=Game;
 # vi: encoding=utf-8
