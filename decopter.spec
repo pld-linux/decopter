@@ -3,7 +3,7 @@ Summary:	Unrealistic helicopter simulator
 Summary(pl):	Nierealistyczny symulator helikoptera
 Name:		decopter
 Version:	0.2.11
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications/Games
 Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
@@ -38,7 +38,8 @@ grywalny, mo¿na tylko lataæ w ko³o.
 %build
 %{__make} \
 	CXX="%{__cxx}" \
-	CXXFLAGS="`sdl-config --cflags` -I/usr/X11R6/include -Wall %{rpmcflags} %{!?debug:-fomit-frame-pointer}"
+	CXXFLAGS="`sdl-config --cflags` -I/usr/X11R6/include -Wall %{rpmcflags} %{!?debug:-fomit-frame-pointer}" \
+	LDFLAGS="`sdl-config --libs` -L%{_prefix}/X11R6/%{_lib} -lSDL_image -lGL -lGLU -lstdc++"
 
 %install
 rm -rf $RPM_BUILD_ROOT
