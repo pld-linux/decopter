@@ -9,6 +9,7 @@ Group:		X11/Applications/Games
 Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 Source1:	http://dl.sourceforge.net/%{name}/%{name}-textures-%{_textures_ver}.tar.gz
 Source2:	%{name}.desktop
+Source3:	%{name}.png
 Patch0:		%{name}-paths.patch
 URL:		http://decopter.sourceforge.net/
 Buildrequires:	OpenGL-devel
@@ -35,7 +36,7 @@ grywalny, mo¿na tylko lataæ w ko³o.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_bindir},%{_applnkdir}/Games} \
+install -d $RPM_BUILD_ROOT{%{_bindir},%{_applnkdir}/Games,%{_pixmapsdir}} \
 	$RPM_BUILD_ROOT%{_datadir}/%{name}/{3D,desc,maps,textures}
 
 install fly $RPM_BUILD_ROOT%{_bindir}/decopter
@@ -48,6 +49,7 @@ install maps/* $RPM_BUILD_ROOT%{_datadir}/%{name}/maps
 install textures/* $RPM_BUILD_ROOT%{_datadir}/%{name}/textures
 
 install %{SOURCE2} $RPM_BUILD_ROOT%{_applnkdir}/Games
+install %{SOURCE3} $RPM_BUILD_ROOT%{_pixmapsdir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -61,3 +63,4 @@ echo "NOTE: Run generate_textures before first play"
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/%{name}
 %{_applnkdir}/Games/*
+%{_pixmapsdir}/*
