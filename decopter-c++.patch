@@ -1,0 +1,19 @@
+--- decopter-0.2.11/point3d.cc.orig	2003-03-12 16:18:34.000000000 +0100
++++ decopter-0.2.11/point3d.cc	2003-05-17 00:36:31.000000000 +0200
+@@ -1,5 +1,6 @@
+ #include "point3d.h"
+ #include <GL/gl.h>
++#include <iostream>
+ 
+ Point3D::Point3D (const Vector3D &pos, float _u, float _v)
+ {
+--- decopter-0.2.11/patch.cc.orig	2003-03-12 16:18:34.000000000 +0100
++++ decopter-0.2.11/patch.cc	2003-05-17 10:42:28.000000000 +0200
+@@ -1,6 +1,7 @@
+ #include "patch.h"
+ #include <iostream>
+ #include <cmath>
++#include <assert.h>
+ 
+ Patch::Patch(double _x1, double _z1, double _x2, double _z2, int PatchLevel, HeightMap *_hm, BTTPool *bttpool, int TextureSize, IndicesTree *lit, IndicesTree *rit, GLuint *_indices)
+ {

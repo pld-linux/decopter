@@ -2,7 +2,7 @@
 Summary:	Unrealistic helicopter simulator
 Summary(pl):	Nierealistyczny symulator helikoptera
 Name:		decopter
-Version:	0.2.9
+Version:	0.2.11
 Release:	1
 License:	GPL
 Group:		X11/Applications/Games
@@ -11,6 +11,7 @@ Source1:	http://dl.sourceforge.net/%{name}/%{name}-textures-%{_textures_ver}.tar
 Source2:	%{name}.desktop
 Source3:	%{name}.png
 Patch0:		%{name}-paths.patch
+Patch1:		%{name}-c++.patch
 URL:		http://decopter.sourceforge.net/
 Buildrequires:	OpenGL-devel
 BuildRequires:	SDL-devel
@@ -28,11 +29,14 @@ decopter jest nierealistycznym symulatorem helikoptera. Nie jest on
 grywalny, mo¿na tylko lataæ w ko³o.
 
 %prep
-%setup -q -a 1
+%setup -q -a1
 %patch0 -p1
+%patch1 -p1
 
 %build
-%{__make}
+%{__make} \
+	CXX="%{__cxx}" \
+	CXXFLAGS="`sdl-config --cflags` -I/usr/X11R6/include -Wall %{rpmcflags} %{!?debug:-fomit-frame-pointer}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -41,7 +45,6 @@ install -d $RPM_BUILD_ROOT{%{_bindir},%{_applnkdir}/Games,%{_pixmapsdir}} \
 
 install fly $RPM_BUILD_ROOT%{_bindir}/decopter
 install generate_textures $RPM_BUILD_ROOT%{_bindir}
-install landscape_texture_browser $RPM_BUILD_ROOT%{_bindir}
 
 install 3D/* $RPM_BUILD_ROOT%{_datadir}/%{name}/3D
 install desc/* $RPM_BUILD_ROOT%{_datadir}/%{name}/desc

@@ -1,37 +1,47 @@
-diff -urN aaa/decopter-0.2.9/fly.cc decopter-0.2.9/fly.cc
---- aaa/decopter-0.2.9/fly.cc	Thu Jan  9 13:32:26 2003
-+++ decopter-0.2.9/fly.cc	Sat Feb  1 22:34:57 2003
+diff -Nur decopter-0.2.11.orig/common.cc decopter-0.2.11/common.cc
+--- decopter-0.2.11.orig/common.cc	2003-03-12 16:18:34.000000000 +0100
++++ decopter-0.2.11/common.cc	2003-05-17 00:21:28.000000000 +0200
+@@ -41,7 +41,7 @@
+ string GetTexturesDirectory()
+ {
+         string TexturesDirectory;
+-        TexturesDirectory="/usr/local/games/decopter/textures/";
++        TexturesDirectory="/usr/share/decopter/textures/";
+         cout <<"TexturesDirectory: "<<TexturesDirectory<<"\n";
+         return TexturesDirectory;
+ }
+diff -Nur decopter-0.2.11.orig/fly.cc decopter-0.2.11/fly.cc
+--- decopter-0.2.11.orig/fly.cc	2003-03-12 16:18:34.000000000 +0100
++++ decopter-0.2.11/fly.cc	2003-05-17 00:21:55.000000000 +0200
 @@ -24,9 +24,9 @@
  
-     gm=new GameManager(InitialScreenWidth,InitialScreenHeight,InitialScreenBPP);
+         gm=new GameManager(InitialScreenWidth,InitialScreenHeight,InitialScreenBPP);
  
--    gm->LoadLandscape("maps/default.land",ViewDistance,40000,MainPatchLevel);
-+    gm->LoadLandscape("/usr/share/decopter/maps/default.land",ViewDistance,40000,MainPatchLevel);
+-        gm->LoadLandscape("maps/default.land",ViewDistance,40000,MainPatchLevel);
++        gm->LoadLandscape("/usr/share/decopter/maps/default.land",ViewDistance,40000,MainPatchLevel);
  
--    gm->InitCopter("3D/copter.metamesh");
-+    gm->InitCopter("/usr/share/decopter/3D/copter.metamesh");
+-        gm->InitCopter("3D/copter.metamesh");
++        gm->InitCopter("/usr/share/decopter/3D/copter.metamesh");
  
-     while (!done)
-     {
-diff -urN aaa/decopter-0.2.9/gamemanager.cc decopter-0.2.9/gamemanager.cc
---- aaa/decopter-0.2.9/gamemanager.cc	Thu Jan  9 13:32:26 2003
-+++ decopter-0.2.9/gamemanager.cc	Sat Feb  1 22:35:11 2003
-@@ -273,8 +273,8 @@
- {
-     MetaMeshes["copter"]=MetaMesh(filename);
-     MetaMeshes["copter"].GenerateLists();
--    copter=new Copter(&(MetaMeshes["copter"]),"desc/copter",Vector3D(5000,1200,-15000),landscape);
--    copter->SetTextures("maps/default.copter");
-+    copter=new Copter(&(MetaMeshes["copter"]),"/usr/share/decopter/desc/copter",Vector3D(5000,1200,-15000),landscape);
-+    copter->SetTextures("/usr/share/decopter/maps/default.copter");
+         while (!done)
+         {
+diff -Nur decopter-0.2.11.orig/gamemanager.cc decopter-0.2.11/gamemanager.cc
+--- decopter-0.2.11.orig/gamemanager.cc	2003-03-12 16:18:34.000000000 +0100
++++ decopter-0.2.11/gamemanager.cc	2003-05-17 00:23:12.000000000 +0200
+@@ -243,7 +243,7 @@
+         MetaMeshes["copter"]=MetaMesh(filename);
+         MetaMeshes["copter"].GenerateLists();
+         copter=new Copter(&(MetaMeshes["copter"]),Vector3D(5000,1200,-15000),landscape);
+-        copter->SetTextures("maps/default.copter");
++        copter->SetTextures("/usr/share/decopter/maps/default.copter");
  }
  
  void GameManager::DrawCopter()
-diff -urN aaa/decopter-0.2.9/generate_textures.cc decopter-0.2.9/generate_textures.cc
---- aaa/decopter-0.2.9/generate_textures.cc	Thu Jan  9 13:32:26 2003
-+++ decopter-0.2.9/generate_textures.cc	Sat Feb  1 22:35:33 2003
-@@ -4,8 +4,8 @@
- #include "utils.h"
+diff -Nur decopter-0.2.11.orig/generate_textures.cc decopter-0.2.11/generate_textures.cc
+--- decopter-0.2.11.orig/generate_textures.cc	2003-03-12 16:18:34.000000000 +0100
++++ decopter-0.2.11/generate_textures.cc	2003-05-17 00:22:09.000000000 +0200
+@@ -3,8 +3,8 @@
+ #include "common.h"
  #include <iostream>
  
 -#define LandscapeFilename "maps/default.land"
@@ -41,30 +51,18 @@ diff -urN aaa/decopter-0.2.9/generate_textures.cc decopter-0.2.9/generate_textur
  
  #define LightX 0.5
  #define LightZ 0.5
-diff -urN aaa/decopter-0.2.9/landscape_texture_browser.cc decopter-0.2.9/landscape_texture_browser.cc
---- aaa/decopter-0.2.9/landscape_texture_browser.cc	Thu Jan  9 13:32:26 2003
-+++ decopter-0.2.9/landscape_texture_browser.cc	Sat Feb  1 22:35:49 2003
-@@ -19,7 +19,7 @@
-     gm=new GameManager(InitialScreenWidth,InitialScreenHeight,InitialScreenBPP);
- 
-     gm->Set2DMode();
--    gm->LoadLandscape("maps/default.land",1,10000,10);
-+    gm->LoadLandscape("/usr/share/decopter/maps/default.land",1,10000,10);
- 
-     while (!done)
-     {
-diff -urN aaa/decopter-0.2.9/maps/default.land decopter-0.2.9/maps/default.land
---- aaa/decopter-0.2.9/maps/default.land	Thu Jan  9 13:32:26 2003
-+++ decopter-0.2.9/maps/default.land	Sat Feb  1 22:40:51 2003
+diff -Nur decopter-0.2.11.orig/maps/default.land decopter-0.2.11/maps/default.land
+--- decopter-0.2.11.orig/maps/default.land	2003-03-12 16:18:34.000000000 +0100
++++ decopter-0.2.11/maps/default.land	2003-05-17 00:24:48.000000000 +0200
 @@ -1,4 +1,4 @@
 -map maps/landscape.png
 +map /usr/share/decopter/maps/landscape.png
  LandscapeScaleXZ 100.0
  LandscapeScaleY 5000.0
  Light 100000 50000 100000 
-diff -urN aaa/decopter-0.2.9/maps/default.trees decopter-0.2.9/maps/default.trees
---- aaa/decopter-0.2.9/maps/default.trees	Thu Jan  9 13:32:26 2003
-+++ decopter-0.2.9/maps/default.trees	Sat Feb  1 22:41:18 2003
+diff -Nur decopter-0.2.11.orig/maps/default.trees decopter-0.2.11/maps/default.trees
+--- decopter-0.2.11.orig/maps/default.trees	2003-03-12 16:18:34.000000000 +0100
++++ decopter-0.2.11/maps/default.trees	2003-05-17 00:25:11.000000000 +0200
 @@ -1,6 +1,6 @@
 -textures/tree1.png tree1
 -textures/tree2.png tree2
@@ -78,15 +76,3 @@ diff -urN aaa/decopter-0.2.9/maps/default.trees decopter-0.2.9/maps/default.tree
 +/usr/share/decopter/textures/tree4.png tree4
 +/usr/share/decopter/textures/tree5.png tree5
 +/usr/share/decopter/textures/tree6.png tree6
-diff -urN aaa/decopter-0.2.9/utils.cc decopter-0.2.9/utils.cc
---- aaa/decopter-0.2.9/utils.cc	Thu Jan  9 13:32:26 2003
-+++ decopter-0.2.9/utils.cc	Sat Feb  1 22:41:49 2003
-@@ -41,7 +41,7 @@
- string GetTexturesDirectory()
- {
-     string TexturesDirectory;
--    TexturesDirectory="/usr/local/games/decopter/textures/";
-+    TexturesDirectory="/usr/share/decopter/textures/";
-     cout <<"TexturesDirectory: "<<TexturesDirectory<<"\n";
-     return TexturesDirectory;
- }
