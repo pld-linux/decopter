@@ -15,9 +15,9 @@ Source3:	%{name}.png
 Patch0:		%{name}-paths.patch
 Patch1:		%{name}-c++.patch
 URL:		http://decopter.sourceforge.net/
-Buildrequires:	OpenGL-devel
+BuildRequires:	OpenGL-devel
 BuildRequires:	SDL-devel
-Buildrequires:	SDL_image-devel
+BuildRequires:	SDL_image-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_noautoreqdep	libGL.so.1 libGLU.so.1
