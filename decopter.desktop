@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=decopter
+Comment=Unrealistic helicopter simulator
+Comment[pl]=Nierealistyczny symulator helikoptera 
+Exec=decopter
+Terminal=0
+Icon=decopter.png
+Type=Application
+# vi: encoding=utf-8
