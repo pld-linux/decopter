@@ -42,7 +42,7 @@ grywalny, mo¿na tylko lataæ w ko³o.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_bindir},%{_applnkdir}/Games,%{_pixmapsdir}} \
+install -d $RPM_BUILD_ROOT{%{_bindir},%{_desktopdir},%{_pixmapsdir}} \
 	$RPM_BUILD_ROOT%{_datadir}/%{name}/{3D,desc,maps,textures}
 
 install fly $RPM_BUILD_ROOT%{_bindir}/decopter
@@ -53,7 +53,7 @@ install desc/* $RPM_BUILD_ROOT%{_datadir}/%{name}/desc
 install maps/* $RPM_BUILD_ROOT%{_datadir}/%{name}/maps
 install textures/* $RPM_BUILD_ROOT%{_datadir}/%{name}/textures
 
-install %{SOURCE2} $RPM_BUILD_ROOT%{_applnkdir}/Games
+install %{SOURCE2} $RPM_BUILD_ROOT%{_desktopdir}
 install %{SOURCE3} $RPM_BUILD_ROOT%{_pixmapsdir}
 
 %clean
@@ -67,5 +67,5 @@ echo "NOTE: Run generate_textures before first play"
 %doc BUGS README
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/%{name}
-%{_applnkdir}/Games/*
+%{_desktopdir}/*
 %{_pixmapsdir}/*
