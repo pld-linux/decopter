@@ -16,12 +16,14 @@ BuildRequires:	SDL-devel
 Buildrequires:	SDL_image-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
+%define		_noautoreqdep	libGL.so.1 libGLU.so.1
+
 %description
 decopter is an unrealistic helicopter simulator. It is not playable,
 you can just fly around.
 
 %description -l pl
-decopter jest nieralistycznym symulatorem helikoptera. Nie jest on
+decopter jest nierealistycznym symulatorem helikoptera. Nie jest on
 grywalny, mo¿na tylko lataæ w ko³o.
 
 %prep
