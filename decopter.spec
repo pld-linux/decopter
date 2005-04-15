@@ -6,9 +6,9 @@ Version:	0.2.11
 Release:	2
 License:	GPL
 Group:		X11/Applications/Games
-Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+Source0:	http://dl.sourceforge.net/decopter/%{name}-%{version}.tar.gz
 # Source0-md5:	802d2fe2f187bab388ef2f9fd37871c8
-Source1:	http://dl.sourceforge.net/%{name}/%{name}-textures-%{_textures_ver}.tar.gz
+Source1:	http://dl.sourceforge.net/decopter}/%{name}-textures-%{_textures_ver}.tar.gz
 # Source1-md5:	95b1311447f1ec91869986550dc9d33b
 Source2:	%{name}.desktop
 Source3:	%{name}.png
