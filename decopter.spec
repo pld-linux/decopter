@@ -1,9 +1,17 @@
+# TODO:
+# 1a) make textures system-wide and generate them in %post
+#      -- or --
+# 1b) run generate_textures automagically when no textures for current user
+#     found
+#  2) possibly move generate_textures to %{_libdir} or make its name less
+#     general
+#
 %define		_textures_ver	0.2.7
 Summary:	Unrealistic helicopter simulator
 Summary(pl):	Nierealistyczny symulator helikoptera
 Name:		decopter
 Version:	0.2.11
-Release:	2
+Release:	2.1
 License:	GPL
 Group:		X11/Applications/Games
 Source0:	http://dl.sourceforge.net/decopter/%{name}-%{version}.tar.gz
