@@ -23,7 +23,7 @@ Source3:	%{name}.png
 Patch0:		%{name}-paths.patch
 Patch1:		%{name}-c++.patch
 URL:		http://decopter.sourceforge.net/
-BuildRequires:	OpenGL-devel
+BuildRequires:	OpenGL-GLU-devel
 BuildRequires:	SDL_image-devel
 BuildRequires:	libstdc++-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -46,8 +46,8 @@ grywalny, mo¿na tylko lataæ w ko³o.
 %build
 %{__make} \
 	CXX="%{__cxx}" \
-	CXXFLAGS="`sdl-config --cflags` -I/usr/X11R6/include -Wall %{rpmcflags} %{!?debug:-fomit-frame-pointer}" \
-	LDFLAGS="`sdl-config --libs` -L%{_prefix}/X11R6/%{_lib} -lSDL_image -lGL -lGLU -lstdc++"
+	CXXFLAGS="`sdl-config --cflags` -Wall %{rpmcflags} %{!?debug:-fomit-frame-pointer}" \
+	LDFLAGS="`sdl-config --libs` -lSDL_image -lGL -lGLU -lstdc++"
 
 %install
 rm -rf $RPM_BUILD_ROOT
