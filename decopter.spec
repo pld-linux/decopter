@@ -76,5 +76,5 @@ echo "NOTE: Run generate_textures before first play"
 %doc BUGS README
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/%{name}
-%{_desktopdir}/*
+%{_desktopdir}/*.desktop
 %{_pixmapsdir}/*
