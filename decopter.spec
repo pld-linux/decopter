@@ -8,7 +8,7 @@
 #
 %define		_textures_ver	0.2.7
 Summary:	Unrealistic helicopter simulator
-Summary(pl):	Nierealistyczny symulator helikoptera
+Summary(pl.UTF-8):   Nierealistyczny symulator helikoptera
 Name:		decopter
 Version:	0.2.11
 Release:	2.1
@@ -34,9 +34,9 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 decopter is an unrealistic helicopter simulator. It is not playable,
 you can just fly around.
 
-%description -l pl
+%description -l pl.UTF-8
 decopter jest nierealistycznym symulatorem helikoptera. Nie jest on
-grywalny, mo¿na tylko lataæ w ko³o.
+grywalny, moÅ¼na tylko lataÄ‡ w koÅ‚o.
 
 %prep
 %setup -q -a1
