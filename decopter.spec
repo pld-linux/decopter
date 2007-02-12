@@ -8,7 +8,7 @@
 #
 %define		_textures_ver	0.2.7
 Summary:	Unrealistic helicopter simulator
-Summary(pl.UTF-8):   Nierealistyczny symulator helikoptera
+Summary(pl.UTF-8):	Nierealistyczny symulator helikoptera
 Name:		decopter
 Version:	0.2.11
 Release:	2.1
