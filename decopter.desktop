@@ -1,11 +1,10 @@
 [Desktop Entry]
-Encoding=UTF-8
 Name=decopter
 Comment=Unrealistic helicopter simulator
 Comment[pl]=Nierealistyczny symulator helikoptera 
 Exec=decopter
 Terminal=false
-Icon=decopter.png
+Icon=decopter
 Type=Application
 Categories=Game;
 # vi: encoding=utf-8
